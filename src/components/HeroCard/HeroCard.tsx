@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { CharacterModel } from "../../models/apiResponseModel";
 import { HeroesServices } from "../../services/heros";
+import { Container, HeroData, HeroImage } from "./HeroCard.ts";
 
-const HeroCard: React.FC = () => {
+function HeroCard() {
   const [heroesList, setHeroesList] = useState<CharacterModel[]>([]);
-  const [error, setError] = useState<string | null>(null);
 
   const fetchData = async () => {
     try {
@@ -23,7 +23,7 @@ const HeroCard: React.FC = () => {
       setHeroesList(heroData);
     } catch (error) {
       console.log(error);
-      setError("Failed to fetch heroes data");
+      console.log(error);
     }
   };
 
@@ -31,30 +31,20 @@ const HeroCard: React.FC = () => {
     fetchData();
   }, []);
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
   console.log(heroesList);
 
   return (
-    <div>
-      {heroesList.length > 0 ? (
-        heroesList.map((hero) => (
-          <div key={hero.id}>
-            <h2>{hero.name}</h2>
-            <p>{hero.description}</p>
-            <img
-              src={`${hero.thumbnail.path}.${hero.thumbnail.extension}`}
-              alt={hero.name}
-            />
-          </div>
-        ))
-      ) : (
-        <div>Loading...</div>
-      )}
-    </div>
+    <Container>
+      {heroesList.map((hero) => (
+        <HeroData>
+          <HeroImage
+            src={hero.thumbnail.path + "." + hero.thumbnail.extension}
+            alt="Foto do heroi"
+          />
+        </HeroData>
+      ))}
+    </Container>
   );
-};
+}
 
 export default HeroCard;
