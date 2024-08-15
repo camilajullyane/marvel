@@ -9,7 +9,7 @@ function NavBar() {
       />
       <NavContainer>
         <NavItem>SOBRE</NavItem>
-        <NavItem>COMICS</NavItem>
+        <NavItem>HEROIS</NavItem>
         <NavItem>COMICS</NavItem>
         <NavItem>COMICS</NavItem>
       </NavContainer>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ParentContainer = styled.div`
   width: 100%;
   height: 12%;
-  background-color: lightslategray;
+  background-color: #94a3b8;
   display: flex;
   justify-content: space-between;
   position: relative;
